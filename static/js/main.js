@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // UI Loading State
         extractBtn.disabled = true;
-        btnText.textContent = 'Processing...';
+        btnText.textContent = 'Analyzing Image...';
         loader.classList.remove('hidden');
         resultSection.classList.add('hidden');
 
@@ -97,16 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 outputText.value = data.text;
                 resultSection.classList.remove('hidden');
-                resultSection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             } else {
-                alert('OCR Error: ' + (data.error || 'Unknown error'));
+                alert('Analysis Error: ' + (data.error || 'Unknown error'));
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Failed to connect to the server');
+            alert('Cloud connection lost. Check your server.');
         } finally {
             extractBtn.disabled = false;
-            btnText.textContent = 'Extract Text';
+            btnText.textContent = 'Extract Intelligence';
             loader.classList.add('hidden');
         }
     });
@@ -117,9 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.execCommand('copy');
 
         const originalIcon = copyBtn.innerHTML;
-        copyBtn.innerHTML = '<i class="fa-solid fa-check" style="color: #10b981;"></i>';
+        copyBtn.innerHTML = '<i class="fa-solid fa-check" style="color: var(--primary);"></i>';
+        copyBtn.style.borderColor = 'var(--primary)';
+        
         setTimeout(() => {
             copyBtn.innerHTML = originalIcon;
+            copyBtn.style.borderColor = 'var(--glass-border)';
         }, 2000);
     });
 
