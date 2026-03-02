@@ -1,0 +1,7 @@
+Flask
+pytesseract
+Pillow
+werkzeug
+opencv-python
+numpy
+gunicorn

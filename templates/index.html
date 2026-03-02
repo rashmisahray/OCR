@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nova OCR - High-performance intelligent text extraction from images.">
+    <title>Nova OCR | AI-Powered Text Extraction</title>
+    
+    <!-- Design Assets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="cyber-theme">
+    <div class="visual-engine">
+        <div class="glow-point p-1"></div>
+        <div class="glow-point p-2"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <main class="app-shell">
+        <nav class="glass-header">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div class="scan-line"></div>
+                </div>
+                <h1>Nova<span>OCR</span></h1>
+            </div>
+            <div class="header-meta">
+                <span class="status-badge"><i class="fa-solid fa-bolt"></i> AI Optimized</span>
+            </div>
+        </nav>
+
+        <div class="content-grid">
+            <section class="upload-zone-wrapper">
+                <div id="drop-zone" class="glass-card upload-card">
+                    <div class="card-content">
+                        <div class="icon-stack">
+                            <i class="fa-solid fa-file-arrow-up main-icon"></i>
+                            <i class="fa-solid fa-plus sub-icon"></i>
+                        </div>
+                        <h3>Initialize Scan</h3>
+                        <p>Drop image here or <span class="highlight">browse system</span></p>
+                        <input type="file" id="file-input" hidden accept="image/*">
+                    </div>
+                    
+                    <div id="preview-container" class="preview-overlay hidden">
+                        <img id="image-preview" src="" alt="OCR Target">
+                        <button id="remove-img" class="action-btn delete" title="Clear Image">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button id="extract-btn" class="nova-btn primary" disabled>
+                    <span class="btn-content">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span class="text">Extract Intelligence</span>
+                    </span>
+                    <div class="btn-loader hidden"></div>
+                </button>
+            </section>
+
+            <section id="result-section" class="result-area hidden">
+                <div class="glass-card result-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-terminal"></i> Output Buffer</h3>
+                        <div class="controls">
+                            <button id="copy-btn" class="icon-btn" title="Copy Text"><i class="fa-regular fa-clone"></i></button>
+                            <button id="download-btn" class="icon-btn" title="Save as TXT"><i class="fa-solid fa-file-export"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <textarea id="output-text" placeholder="Awaiting data input..." readonly></textarea>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="glass-footer">
+            <p>&copy; 2026 Nova OCR Core. Optimized for high-precision extraction.</p>
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
